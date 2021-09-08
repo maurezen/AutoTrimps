@@ -443,11 +443,14 @@ function initializeAllSettings() {
 
 
 // Nature settings:
-    createSetting('AutoNatureTokens', 'Spend Nature Tokens', '<b>MASTER BUTTON</b> Automatically spend or convert nature tokens.', 'boolean', false, null, 'Nature');
+    createSetting('AutoNatureTokens', 'Spend Nature Tokens', '<b>MASTER BUTTON</b> Automatically spend or convert nature tokens. Automatically trigger empowerments.', 'boolean', false, null, 'Nature');
     createSetting('AutoPoison', 'Poison', 'Spend/convert Poison tokens', 'dropdown', 'Off', ['Off', 'Empowerment', 'Transfer', 'Convert to Wind', 'Convert to Ice', 'Convert to Both'], 'Nature');
     createSetting('AutoWind', 'Wind', 'Spend/convert Wind tokens', 'dropdown', 'Off', ['Off', 'Empowerment', 'Transfer', 'Convert to Poison', 'Convert to Ice', 'Convert to Both'], 'Nature');
     createSetting('AutoIce', 'Ice', 'Spend/convert Ice tokens', 'dropdown', 'Off', ['Off', 'Empowerment', 'Transfer', 'Convert to Poison', 'Convert to Wind', 'Convert to Both'], 'Nature');
     createSetting('WindInMaps', 'Wind in maps', 'Use wind stance while in maps ', 'boolean', false, null, 'Nature');
+    createSetting('AutoTriggerNatureDaily', 'Trigger on Daily', 'Trigger empowerments of nature on a Daily run', 'dropdown', 'Wind', ['Off', 'Poison', 'Ice', 'Wind'], 'Nature');
+    createSetting('AutoTriggerNatureChallenge', 'Trigger on Challenge', 'Trigger empowerments of nature on a Challenge run', 'dropdown', 'Off', ['Off', 'Poison', 'Ice', 'Wind'], 'Nature');
+    createSetting('AutoTriggerNatureFiller', 'Trigger on Filler', 'Trigger empowerments of nature on a filler run', 'dropdown', 'Off', ['Off', 'Poison', 'Ice', 'Wind'], 'Nature');
 
 
 

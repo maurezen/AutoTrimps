@@ -61,6 +61,28 @@ function autoGoldenUpgradesAT(setting) {
 //} catch(err) { debug("Error in autoGoldenUpgrades: " + err.message, "general"); }
 }
 
+//auto trigger empowerments
+function autoNatureEmpowerment() {
+    if (mainWrapper.isNatureEmpowered()) return;
+
+    if (mainWrapper.isDailyRunning()) {
+        var dailySetting = getPageSetting('AutoTriggerNatureDaily');
+        if (dailySetting && dailySetting != 'Off') {
+            naturePurchase("uberEmpower", dailySetting);
+        }
+    } else if (mainWrapper.isChallengeRunning()) {
+        var challengeSetting = getPageSetting('AutoTriggerNatureChallenge');
+        if (challengeSetting && challengeSetting != 'Off') {
+            naturePurchase("uberEmpower", challengeSetting);
+        }
+    } else {
+        var fillerSetting = getPageSetting('AutoTriggerNatureFiller');
+        if (fillerSetting && fillerSetting != 'Off') {
+            naturePurchase("uberEmpower", fillerSetting);
+        }
+    }
+}
+
 //auto spend nature tokens
 function autoNatureTokens() {
     var changed = false;
