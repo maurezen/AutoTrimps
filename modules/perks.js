@@ -14,7 +14,7 @@ var AutoPerks = {};
 MODULES["perks"] = {};
 MODULES["perks"].showDetails = true;   //show which individual perks are spent;
 MODULES["perks"].useAlgo2 = false;   //use algorithm 2 instead.
-MODULES["perks"].fastAllocateFactor = 100000;   //perk purchase loop multiplier
+MODULES["perks"].fastAllocateFactor = 100000000000;   //perk purchase loop multiplier
 
 //Import the FastPriorityQueue.js general Library (not AT specific, but needed for perk queue)
 var head = document.getElementsByTagName('head')[0];
@@ -644,7 +644,8 @@ AutoPerks.spendHelium2 = function(helium) {
         mostEff.efficiency = inc / price;
         i++;
     }
-    AutoPerks.fastAllocateFactor = MODULES["perks"].fastAllocateFactor;
+    var factor = getPageSetting('AutoPerksFactor');
+    AutoPerks.fastAllocateFactor = factor ? factor : MODULES["perks"].fastAllocateFactor;
     for (iterateQueue() ; mostEff.price <= helium ; iterateQueue() ) {
         if(mostEff.level < mostEff.max) { // but first, check if the perk has reached its maximum value
             helium = AutoPerks.bumpPerkLevel(mostEff, helium);
@@ -723,23 +724,34 @@ AutoPerks.applyCalculationsRespec = function(perks,remainingHelium){
         clearPerks();
         var preBuyAmt = game.global.buyAmt;
 
+        var he = remainingHelium;
+
         perks.reverse();//we want last perk to be t2 one so max instead of precise calc has less of an impact
         for(var i in perks) {
             if (perks[i]) {//defense against future unknown perks
                 var capitalized = AutoPerks.capitaliseFirstLetter(perks[i].name);
-                if (perks.length - 1 == i) {//fall back to max for the last perk out there so we're not hit by rounding
+                var maxFallback = getPageSetting('AutoPerksMaxFallback');
+                if (perks.length - 1 == i && maxFallback) {
+                    //fall back to max for the last perk out there so we're not hit by rounding
+                    //except at high levels that still happens, hence a setting toggle
                     game.global.buyAmt = "Max";
                 } else {
                     game.global.buyAmt = perks[i].level;
                 }   
                 //works fine, has u2 factored in
-                if (getPortalUpgradePrice(capitalized) <= remainingHelium) {
-                    if (MODULES["perks"].showDetails)
-                        debug("AutoPerks-Respec Buying: " + capitalized + " " + perks[i].level, "perks");
+                var price = getPortalUpgradePrice(capitalized);
+                if (price <= he) {
+                    if (MODULES["perks"].showDetails) {
+                        debug("AutoPerks-Respec Buying: " + capitalized + " " + perks[i].level + " for " + prettify(price), "perks");
+                    }
                     buyPortalUpgrade(capitalized);
-                } else
-                    if (MODULES["perks"].showDetails)
-                        debug("AutoPerks-Respec Error Couldn't Afford Asked Perk: " + capitalized + " " + perks[i].level, "perks");
+                    //this tracking of he remaining should help autoperks to nope out of issues and not leave us with zero looting
+                    he -= price;
+                } else {
+                    if (MODULES["perks"].showDetails) {
+                        debug("AutoPerks-Respec Error Couldn't Afford Asked Perk: " + capitalized + " " + perks[i].level + " for " + prettify(price) + " : only " + prettify(he) + " left. Check for rounding; try toggling max fallback setting.", "perks");
+                    }
+                }
             }
         }
         perks.reverse();//no idea if anything else uses it so we'd better fix it
@@ -747,8 +759,7 @@ AutoPerks.applyCalculationsRespec = function(perks,remainingHelium){
         numTab(1,true);     //selects the 1st number of the buy-amount tab-bar (Always 1)
         cancelTooltip();    //displays the last perk we bought's tooltip without this. idk why.
         //activateClicked();    //click OK for them (disappears the window).
-    }
-    else {
+    } else {
         debug("A Respec would be required and is not available. You used it already, try again next portal.","perks");
         AutoPerks.GUI.$allocatorBtn1.setAttribute('class', 'btn inPortalBtn settingsBtn settingBtnfalse');
         tooltip("Automatic Perk Allocation Error", "customText", event, "A Respec would be required and is NOT available. You used it already, try again next portal. Press <b>esc</b> to close this tooltip." );
@@ -768,13 +779,15 @@ AutoPerks.applyCalculations = function(perks,remainingHelium){
             game.global.buyAmt = perks[i].level - gameLevel - game.portal[capitalized].levelTemp;
             if (game.global.buyAmt < 0) {
                 needsRespec = true;
-                if (MODULES["perks"].showDetails)
+                if (MODULES["perks"].showDetails) {
                     debug("AutoPerks RESPEC Required for: " + capitalized + " " + game.global.buyAmt, "perks");
+                }
                 break;//no point iterating further
             }
             else if (game.global.buyAmt > 0) {
-                if (MODULES["perks"].showDetails)
+                if (MODULES["perks"].showDetails) {
                     debug("AutoPerks-NoRespec Adding: " + capitalized + " " + game.global.buyAmt, "perks");
+                }
                 buyPortalUpgrade(capitalized);
             }
         }
