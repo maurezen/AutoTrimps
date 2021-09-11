@@ -724,7 +724,7 @@ AutoPerks.applyCalculationsRespec = function(perks,remainingHelium){
         clearPerks();
         var preBuyAmt = game.global.buyAmt;
 
-        var he = remainingHelium;
+        debug("AutoPerks-Respec remainingHelium: " + remainingHelium + " " + " mainWrapper.he: " + mainWrapper.getAvailableHeliumDuringRespec(), "perks");
 
         perks.reverse();//we want last perk to be t2 one so max instead of precise calc has less of an impact
         for(var i in perks) {
@@ -739,14 +739,13 @@ AutoPerks.applyCalculationsRespec = function(perks,remainingHelium){
                     game.global.buyAmt = perks[i].level;
                 }   
                 //works fine, has u2 factored in
+                var he = mainWrapper.getAvailableHeliumDuringRespec();
                 var price = getPortalUpgradePrice(capitalized);
                 if (price <= he) {
                     if (MODULES["perks"].showDetails) {
                         debug("AutoPerks-Respec Buying: " + capitalized + " " + perks[i].level + " for " + prettify(price), "perks");
                     }
                     buyPortalUpgrade(capitalized);
-                    //this tracking of he remaining should help autoperks to nope out of issues and not leave us with zero looting
-                    he -= price;
                 } else {
                     if (MODULES["perks"].showDetails) {
                         debug("AutoPerks-Respec Error Couldn't Afford Asked Perk: " + capitalized + " " + perks[i].level + " for " + prettify(price) + " : only " + prettify(he) + " left. Check for rounding; try toggling max fallback setting.", "perks");

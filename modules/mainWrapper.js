@@ -89,3 +89,7 @@ mainWrapper.isChallengeRunning = function() {
 mainWrapper.isNatureEmpowered = function() {
     return game.global.uberNature != "";
 }
+
+mainWrapper.getAvailableHeliumDuringRespec = funciton() {
+    return game.resources.helium.respecMax - game.resources.helium.totalSpentTemp;
+}
