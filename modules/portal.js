@@ -118,7 +118,7 @@ function doPortal(challenge) {
         AutoPerks.clickAllocate();
     //Auto Start Daily:
     if (getPageSetting('AutoStartDaily')) {
-        selectChallenge('Daily');
+        mainWrapper.selectChallengeSafely('Daily');
         checkCompleteDailies();
 
         var lastUndone = -7; // Note: Most previous challenge == -6
@@ -131,7 +131,7 @@ function doPortal(challenge) {
         if (lastUndone == 1) { // None
             debug("All available Dailies already completed.", "portal");
             //Fallback to w/e Regular challenge we picked. Or none (unselect)
-            selectChallenge(challenge || 0);
+            mainWrapper.selectChallengeSafely(challenge);
         } else {
             getDailyChallenge(lastUndone);
             debug("Portaling into Daily for: " + getDailyTimeString(lastUndone, true) + " now!", "portal");
@@ -139,7 +139,7 @@ function doPortal(challenge) {
     }
     //Regular Challenge:
     else if(challenge) {
-        selectChallenge(challenge);
+        mainWrapper.selectChallengeSafely(challenge);
     }
     //Push He Data:
     pushData();

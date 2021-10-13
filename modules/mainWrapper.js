@@ -93,3 +93,12 @@ mainWrapper.isNatureEmpowered = function() {
 mainWrapper.getAvailableHeliumDuringRespec = function() {
     return game.resources.helium.respecMax - game.resources.helium.totalSpentTemp;
 }
+
+mainWrapper.selectChallengeSafely = function(what) {
+    if (what && game.challenges(what) && game.challenges(what).filter()) {
+        selectChallenge(what);
+    } else {
+        selectChallenge(0);
+    }
+
+}
