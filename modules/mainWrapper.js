@@ -95,7 +95,7 @@ mainWrapper.getAvailableHeliumDuringRespec = function() {
 }
 
 mainWrapper.selectChallengeSafely = function(what) {
-    if (what && game.challenges(what) && game.challenges(what).filter()) {
+    if (what && game.challenges[what] && game.challenges[what].filter()) {
         selectChallenge(what);
     } else {
         selectChallenge(0);
