@@ -14,7 +14,11 @@ mainWrapper.getCurrentCell = function() {
 //cell is a current world or map cell object
 mainWrapper.isEnemyFast = function(cell) {
     var checkFast =
-        (game.global.challengeActive == "Slow" || ((((game.badGuys[cell.name].fast || cell.mutation == "Corruption") && game.global.challengeActive != "Nom") || game.global.voidBuff == "doubleAttack") && game.global.challengeActive != "Coordinate"));
+        (game.global.challengeActive == "Glass"
+            || game.global.challengeActive == "Slow"
+            || ((((game.badGuys[cell.name].fast || cell.mutation == "Corruption")
+                && game.global.challengeActive != "Nom") || game.global.voidBuff == "doubleAttack")
+                && game.global.challengeActive != "Coordinate"));
     var experienced = game.global.challengeActive == "Exterminate" && game.challenges.Exterminate.experienced;
     var forceSlow = false;
     if (game.global.challengeActive == "Duel"){
