@@ -955,7 +955,7 @@ AutoPerks.initializePerks = function () {
     //10% compounding 
     var tenacity = new AutoPerks.VariablePerk("tenacity", 50000000, true,      11, 0.1, 40);
     //we'll think of it as of 10% compounding to not complicate things too much
-    var greed = new AutoPerks.VariablePerk("greed", 10000000000, true,      12, 0.1, 40);
+    var greed = new AutoPerks.VariablePerk("greed", 10000000000, true,      12, 0.21, 40);
     var frenzy = new AutoPerks.VariablePerk("frenzy", 1000000000000000, true, 13, 0.1);
     var hunger = new AutoPerks.FixedPerk("hunger", 1000000, 30);
     //value it at max runestones, so base increase is lvl1 * 1000% = 10x
@@ -967,8 +967,8 @@ AutoPerks.initializePerks = function () {
     var championism = new AutoPerks.VariablePerk("championism", 1e9, true, 15, 0.1)
     championism.exprate = 5;
 
-    //it gives 1 extra tenacity and greed, which means it is valued at 0.21
-    var masterfulness = new AutoPerks.VariablePerk("masterfulness", 1e23, true, 16, 0.21)
+    //it gives 1 extra tenacity and greed, which means it is valued at 1.21*1.1
+    var masterfulness = new AutoPerks.VariablePerk("masterfulness", 1e23, true, 16, 0.331)
     masterfulness.exprate = 50;
     
     AutoPerks.perkHolder = [];    
