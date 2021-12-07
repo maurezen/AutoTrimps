@@ -103,7 +103,7 @@ var preset_Rmauz155 = [8, 0.7, 1.8, 0.8, 0.2, 1.3, 3.3, 2.1, 0.8, 0.1, 2, 1, 2, 
 var preset_Rmauz200 = [8, 0.7, 2.5, 0.8, 0.2, 1.3, 4, 5.5, 0.8, 0.4, 0.3, 1, 2, 0.7, 800, 150, 100];
 
 var presetListU2 = [preset_RZek059, preset_RZekmelt, preset_RZekquag, preset_Rmauquag, 
-                    preset_Rmauc3, preset_Rmauz135, preset_Rmauz155, presert_Rmauz200, preset_Rspace];
+                    preset_Rmauc3, preset_Rmauz135, preset_Rmauz155, preset_Rmauz200, preset_Rspace];
 var presetListHtmlU2 = "\
 <option id='preset_RZek059'>Adjusted Zek (z1-59)</option>\
 <option id='preset_RZekmelt'>Adjusted Zek (Melt)</option>\
