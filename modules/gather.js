@@ -4,6 +4,16 @@ MODULES["gather"].minTraps = 100;
 MODULES["gather"].minScienceAmount = 100;
 MODULES["gather"].minScienceSeconds = 60;
 
+function autoGatherIfTurnedOn() {
+    if (getPageSetting('ManualGather2')<=2) {
+        manualLabor();  //"Auto Gather/Build"
+    } else if (getPageSetting('ManualGather2') == 3) {
+        manualLabor2(); //"Auto Gather/Build #2"
+    } else if (getPageSetting('ManualGather2') == 4) {
+        manualLaborLateGame(); //"Auto Gather/Build #L
+    }
+}
+
 //OLD: "Auto Gather/Build"
 function manualLabor() {
     if (getPageSetting('ManualGather2')==0) return;
@@ -242,4 +252,16 @@ function manualLabor2() {
         setGather(lowestResource);
     //ok
     return true;
+}
+
+//At the late game stages we don't need fancy logic
+function manualLaborLateGame() {
+    // Hypothermia only cares about wood because muh fires
+    if (game.global.challengeActive == 'Hypothermia') {
+        setGather('wood')
+    // Everything else only cares about metal because you're starved for metal for equipment at the end of the run
+    // and don't really care otherwise
+    } else {
+        setGather('metal')
+    }
 }
