@@ -18,7 +18,9 @@ mainWrapper.isEnemyFast = function(cell) {
             || game.global.challengeActive == "Slow"
             || ((((game.badGuys[cell.name].fast || cell.mutation == "Corruption")
                 && game.global.challengeActive != "Nom") || game.global.voidBuff == "doubleAttack")
-                && game.global.challengeActive != "Coordinate"));
+                && game.global.challengeActive != "Coordinate"))
+        //@todo #98 - assuming any mutated imps to be fast because I can't find their fast flag otherwise
+        || (game.global.universe == 2 && cell.u2Mutation != undefined && cell.u2Mutation.length > 0);
     var experienced = game.global.challengeActive == "Exterminate" && game.challenges.Exterminate.experienced;
     var forceSlow = false;
     if (game.global.challengeActive == "Duel"){
