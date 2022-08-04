@@ -90,20 +90,21 @@ var presetListHtml = "\
 <option id='customPreset'>CUSTOM ratio</option></select>";
 
 //U2
-//[looting,toughness,power,motivation,pheromones,artisanistry,carpentry,resilience,prismal,equality,criticality,tenacity, greed, frenzy, observation, championism, masterfulness]
-var preset_Rspace = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var preset_RZek059 = [7, 10, 5, 1, 0.5, 2, 12, 9, 0.5, 2, 5, 0, 0, 0, 0, 0, 0];
-var preset_RZekmelt = [10, 0.5, 2, 0.5, 0.3, 1.2, 3, 1, 0.5, 1, 3, 18, 20, 0, 0, 0, 0];
-var preset_RZekquag = [8, 0.7, 1.8, 0.8, 0.2, 1.3, 3.3, 0.6, 0.8, 2.8, 6.2, 18, 27, 12, 0, 0, 0];
-var preset_Rmauquag = [8, 0.7, 1.8, 0.8, 0.2, 1.3, 3.3, 0.6, 0.8, 0.01, 6.2, 18, 27, 12, 0, 0, 0];
-var preset_Rmauc3 = [1, 1, 3, 0.8, 0.2, 1.3, 3.3, 2, 1, 0.01, 6.2, 30, 1, 12, 1, 1, 0];
-var preset_Rmauc3greedy = [8, 1, 3, 0.8, 0.2, 1.3, 3.3, 2, 1, 0.01, 6.2, 18, 15, 12, 1, 0, 0];
-var preset_Rmauz135 = [8, 0.7, 1.8, 0.8, 0.2, 1.3, 3.3, 2.1, 0.8, 0.1, 2, 1, 2, 1.2, 5, 0, 0];
-var preset_Rmauz155 = [8, 0.7, 1.8, 0.8, 0.2, 1.3, 3.3, 2.1, 0.8, 0.1, 2, 1, 2, 1.2, 5, 1, 0];
-var preset_Rmauz200 = [8, 0.7, 2.5, 0.8, 0.2, 1.3, 4, 5.5, 0.8, 0.4, 0.3, 1, 2, 0.7, 800, 150, 100];
+//[looting,toughness,power,motivation,pheromones,artisanistry,carpentry,resilience,prismal,equality,criticality,tenacity, greed, frenzy, observation, championism, masterfulness, smithology, expansion]
+var preset_Rspace = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var preset_RZek059 = [7, 10, 5, 1, 0.5, 2, 12, 9, 0.5, 2, 5, 0, 0, 0, 0, 0, 0, 0, 0];
+var preset_RZekmelt = [10, 0.5, 2, 0.5, 0.3, 1.2, 3, 1, 0.5, 1, 3, 18, 20, 0, 0, 0, 0, 0, 0];
+var preset_RZekquag = [8, 0.7, 1.8, 0.8, 0.2, 1.3, 3.3, 0.6, 0.8, 2.8, 6.2, 18, 27, 12, 0, 0, 0, 0, 0];
+var preset_Rmauquag = [8, 0.7, 1.8, 0.8, 0.2, 1.3, 3.3, 0.6, 0.8, 0.01, 6.2, 18, 27, 12, 0, 0, 0, 0, 0];
+var preset_Rmauc3 = [1, 1, 3, 0.8, 0.2, 1.3, 3.3, 2, 1, 0.01, 6.2, 30, 1, 12, 1, 1, 0, 0, 0];
+var preset_Rmauc3greedy = [8, 1, 3, 0.8, 0.2, 1.3, 3.3, 2, 1, 0.01, 6.2, 18, 15, 12, 1, 0, 0, 0, 0];
+var preset_Rmauz135 = [8, 0.7, 1.8, 0.8, 0.2, 1.3, 3.3, 2.1, 0.8, 0.1, 2, 1, 2, 1.2, 5, 0, 0, 0, 0];
+var preset_Rmauz155 = [8, 0.7, 1.8, 0.8, 0.2, 1.3, 3.3, 2.1, 0.8, 0.1, 2, 1, 2, 1.2, 5, 1, 0, 0, 0];
+var preset_Rmauz200 = [8, 0.7, 2.5, 0.8, 0.2, 1.3, 4, 5.5, 0.8, 0.4, 0.3, 1, 2, 0.7, 800, 150, 100, 0, 0];
+var preset_Rmauz250 = [8, 0.7, 2.5, 0.8, 0.2, 1.3, 4, 5.5, 0.8, 0.4, 0.3, 1, 2, 0.7, 800, 150, 100, 5, 5];
 
 var presetListU2 = [preset_RZek059, preset_RZekmelt, preset_RZekquag, preset_Rmauquag, 
-                    preset_Rmauc3, preset_Rmauz135, preset_Rmauz155, preset_Rmauz200, preset_Rspace];
+                    preset_Rmauc3, preset_Rmauz135, preset_Rmauz155, preset_Rmauz200, preset_Rmauz250, preset_Rspace];
 var presetListHtmlU2 = "\
 <option id='preset_RZek059'>Adjusted Zek (z1-59)</option>\
 <option id='preset_RZekmelt'>Adjusted Zek (Melt)</option>\
@@ -113,6 +114,7 @@ var presetListHtmlU2 = "\
 <option id='preset_Rmauz135'>maurezen ~z135</option>\
 <option id='preset_Rmauz155'>maurezen ~z155</option>\
 <option id='preset_Rmauz200'>maurezen ~z200</option>\
+<option id='preset_Rmauz250'>maurezen ~z250</option>\
 <option id='preset_Rspace'>--------------</option>\
 <option id='customPreset'>CUSTOM ratio</option></select>";	
 
@@ -197,7 +199,16 @@ AutoPerks.displayGUI = function() {
         listratiosLine3 = ["Resilience","Tenacity","Greed", "Frenzy", "Observation", "Championism", "Masterfulness"];
         for (var i in listratiosLine3) {
             AutoPerks.createInput(listratiosLine3[i],apGUI.$ratiosLine3);    
-        }  
+        }
+        //line 4 of the UI
+        apGUI.$ratiosLine4 = document.createElement("DIV");
+        apGUI.$ratiosLine4.setAttribute('style', 'display: inline-block; text-align: left; width: 100%');
+        apGUI.$customRatios.appendChild(apGUI.$ratiosLine4);
+        var listratiosLine4;
+        listratiosLine4 = ["Expansion","Smithology"];
+        for (var i in listratiosLine4) {
+            AutoPerks.createInput(listratiosLine4[i],apGUI.$ratiosLine4);
+        }
     }
     //Create dump perk dropdown
     apGUI.$dumpperklabel = document.createElement("Label");
@@ -242,14 +253,19 @@ AutoPerks.displayGUI = function() {
     if (loadLastPreset != null) { 
         //these four lines are temporary to migrate Custom Ratios to the new dropdown. Once everyone has the name in localStorage we can remove this.
         itemName = game.global.universe == 1 ? 'AutoperkSelectedRatioPresetName' : 'AutoperkSelectedRatioPresetNameU2';
-        if (loadLastPreset == 15 && !localStorage.getItem(itemName))
+        if (loadLastPreset == 15 && !localStorage.getItem(itemName)) {
             loadLastPreset = 25;
-        if (localStorage.getItem(itemName)=="customPreset")
-            loadLastPreset = 25;        
+        } else if (localStorage.getItem(itemName)=="customPreset") {
+            loadLastPreset = 25;
+        }
+        if (25 == loadLastPreset && game.global.universe == 2) {
+            //this should point us exactly at the custom preset
+            loadLastPreset = presetListU2.length;
+        }
         setID = loadLastPreset;
-    }
-    else 
+    } else {
         setID = 0; // First element is zxv (default) ratio.
+    }
     apGUI.$ratioPreset.selectedIndex = setID;
     //Add the presets dropdown to UI Line 1
     apGUI.$ratiosLine1.appendChild(apGUI.$ratioPresetLabel);
@@ -970,13 +986,26 @@ AutoPerks.initializePerks = function () {
     //it gives 1 extra tenacity and greed, which means it is valued at 1.21*1.1
     var masterfulness = new AutoPerks.VariablePerk("masterfulness", 1e23, true, 16, 0.331)
     masterfulness.exprate = 50;
+
+    //improves smithy base effect; at zone 250 we can see about 40 smithies
+    //a correct comparison is ((1.25+0.01*(N+1))/(1.25+0.01*N))^40 = Y^40
+    //we can get away with the lower bound of (Y-1)*40 + 1
+    //..which is atk/health, and not radon
+    //putting a bogus 0.3 weight here for the time being
+    var smithology = new AutoPerks.VariablePerk("smithology", 1e23, true, 17, 0.3);
+    smithology.exprate = 4;
+
+    //improves tauntimp base effect which is population
+    //putting a bogus 0.3 weight here for the time being
+    var expansion = new AutoPerks.VariablePerk("expansion", 1e23, true, 18, 0.3);
+    expansion.exprate = 3;
     
     AutoPerks.perkHolder = [];    
     //gather these into an array of objects
     if (game.global.universe == 1) {
         AutoPerks.perkHolder = [siphonology, anticipation, meditation, relentlessness, range, agility, bait, trumps, packrat, looting, toughness, power, motivation, pheromones, artisanistry, carpentry, resilience, coordinated, resourceful, overkill, capable, cunning, curious, classy, toughness_II, power_II, motivation_II, carpentry_II, looting_II];
     } else if (game.global.universe == 2) {
-        AutoPerks.perkHolder = [range, agility, bait, trumps, packrat, hunger, looting, toughness, resilience, power, motivation, pheromones, artisanistry, carpentry, prismal, equality, criticality, tenacity, greed, frenzy, observation, championism, masterfulness];
+        AutoPerks.perkHolder = [range, agility, bait, trumps, packrat, hunger, looting, toughness, resilience, power, motivation, pheromones, artisanistry, carpentry, prismal, equality, criticality, tenacity, greed, frenzy, observation, championism, masterfulness, smithology, expansion];
     }
     //initialize basics on all.
     for(var i in AutoPerks.perkHolder) {
