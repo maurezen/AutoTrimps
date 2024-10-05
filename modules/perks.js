@@ -968,9 +968,9 @@ AutoPerks.initializePerks = function () {
     equality.exprate = 1.5;
     //should it be compounding?
     var criticality = new AutoPerks.VariablePerk("criticality", 100, true,     10, 0.1);
-    //10% compounding 
+    //10% compounding. has a max of 40.
     var tenacity = new AutoPerks.VariablePerk("tenacity", 50000000, true,      11, 0.1, 40);
-    //we'll think of it as of 10% compounding to not complicate things too much
+    //we'll think of it as of 10% compounding to not complicate things too much. has a max of 40.
     var greed = new AutoPerks.VariablePerk("greed", 10000000000, true,      12, 0.21, 40);
     var frenzy = new AutoPerks.VariablePerk("frenzy", 1000000000000000, true, 13, 0.1);
     var hunger = new AutoPerks.FixedPerk("hunger", 1000000, 30);
@@ -983,8 +983,8 @@ AutoPerks.initializePerks = function () {
     var championism = new AutoPerks.VariablePerk("championism", 1e9, true, 15, 0.1)
     championism.exprate = 5;
 
-    //it gives 1 extra tenacity and greed, which means it is valued at 1.21*1.1
-    var masterfulness = new AutoPerks.VariablePerk("masterfulness", 1e23, true, 16, 0.331)
+    //it gives 1 extra tenacity and greed, which means it is valued at 1.21*1.1. has a max of 10.
+    var masterfulness = new AutoPerks.VariablePerk("masterfulness", 1e23, true, 16, 0.331, 10)
     masterfulness.exprate = 50;
 
     //improves smithy base effect; at zone 250 we can see about 40 smithies
