@@ -125,23 +125,25 @@ equality.equalityStackBudget = function() {
 }
 
 equality.setStacks = function(equalityNeeded) {
+    var equality = mainWrapper.getEquality();
+
     //there might be some stacks already
     //this can also be NaN sometimes
-    if (isNaN(game.portal.Equality.disabledStackCount)) {
-        game.portal.Equality.disabledStackCount = 0;
+    if (isNaN(equality.disabledStackCount)) {
+        equality.disabledStackCount = 0;
     }
     if (isNaN(equalityNeeded)) {
         equalityNeeded = 0;
     }
     //also this happens to be string if set via slider, hence Number() call
-    game.portal.Equality.disabledStackCount = Number(game.portal.Equality.disabledStackCount) + equalityNeeded;
+    equality.disabledStackCount = Number(equality.disabledStackCount) + equalityNeeded;
 
     //gotta stay in the interval, game doesn't have validation
     var maxEquality = getPerkLevel("Equality");
-    if (game.portal.Equality.disabledStackCount > maxEquality) { // gotta ignore
-        game.portal.Equality.disabledStackCount = maxEquality;
-    } else if (game.portal.Equality.disabledStackCount < 0) {
-        game.portal.Equality.disabledStackCount = 0;
+    if (equality.disabledStackCount > maxEquality) { // gotta ignore
+        equality.disabledStackCount = maxEquality;
+    } else if (equality.disabledStackCount < 0) {
+        equality.disabledStackCount = 0;
     }
 
     manageEqualityStacks();

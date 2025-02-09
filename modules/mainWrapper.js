@@ -108,3 +108,7 @@ mainWrapper.selectChallengeSafely = function(what) {
     }
 
 }
+
+mainWrapper.getEquality = function() {
+    return game.portal.Equality.getObject();
+}
